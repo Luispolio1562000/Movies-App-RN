@@ -1,18 +1,22 @@
 import { nowPlayingAction } from "@/core/actions/movies/now-playing.actions";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Stack } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import "../global.css";
+
+const queryClient = new QueryClient();
 
 const RootLayout = () => {
   nowPlayingAction();
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text>_layout</Text>
-      </View>
-    </SafeAreaView>
+    <QueryClientProvider client={queryClient}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+    </QueryClientProvider>
   );
 };
 
