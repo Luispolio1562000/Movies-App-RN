@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Pressable, Text } from "react-native";
+import { Image, Pressable } from "react-native";
 
 interface Props {
   id: string;
@@ -15,7 +15,7 @@ const MoviePoster = ({
   className,
 }: Props) => {
   return (
-    <Pressable className={`opacity-90 px-2 ${className}`}>
+    <Pressable className={`opacity-90 px-2 ${MoviePoster}`}>
       <Image
         source={{ uri: moviePoster }}
         className="shadow-lg rounded-2xl w-full h-full"
@@ -25,7 +25,6 @@ const MoviePoster = ({
         }}
         resizeMode="cover"
       ></Image>
-      <Text className="text-purple-500 text-center">{id}</Text>
     </Pressable>
   );
 };

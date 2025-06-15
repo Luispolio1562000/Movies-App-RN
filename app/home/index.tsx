@@ -15,7 +15,7 @@ export default function HomeScreen() {
     return (
       <SafeAreaView className="flex-1">
         <View className="justify-center items-center flex-1">
-          <ActivityIndicator color="" size={40} />
+          <ActivityIndicator color="pink" size={40} />
         </View>
       </SafeAreaView>
     );
@@ -23,7 +23,9 @@ export default function HomeScreen() {
 
   return (
     <View className="mt-2" style={{ marginTop: safeArea.top }}>
-      <Text className="text-3xl font-bold px-4 mb-2">Home</Text>
+      <Text className="text-3xl text-center text-red-400 font-bold px-4 mb-2">
+        Movies App
+      </Text>
       {/* Carousel */}
       <MainSalidesShow movies={nowPlayingQuery.data ?? []} />
     </View>
