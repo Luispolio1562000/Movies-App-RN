@@ -1,4 +1,4 @@
-import MainSalidesShow from "@/presentation/componens/MainSalidesShow";
+import MainSalidesShow from "@/presentation/componens/movies/MainSalidesShow";
 import { useMovies } from "@/presentation/hooks/useMovies";
 import React from "react";
 import { ActivityIndicator, Text, View } from "react-native";

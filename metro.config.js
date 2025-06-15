@@ -6,5 +6,8 @@ const {
 
 const config = getDefaultConfig(__dirname);
 
-module.exports = withNativeWind(config, { input: "./global.css" });
-module.exports = wrapWithReanimatedMetroConfig(config);
+// Primero aplicamos NativeWind
+const nativeWindConfig = withNativeWind(config, { input: "./global.css" });
+
+// Luego envolvemos con Reanimated
+module.exports = wrapWithReanimatedMetroConfig(nativeWindConfig);
