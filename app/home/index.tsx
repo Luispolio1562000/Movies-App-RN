@@ -1,4 +1,5 @@
 import MainSalidesShow from "@/presentation/componens/movies/MainSalidesShow";
+import MovieHorizontalList from "@/presentation/componens/movies/MovieHorizontalList";
 import { useMovies } from "@/presentation/hooks/useMovies";
 import React from "react";
 import { ActivityIndicator, Text, View } from "react-native";
@@ -9,7 +10,7 @@ import {
 
 export default function HomeScreen() {
   const safeArea = useSafeAreaInsets();
-  const { nowPlayingQuery } = useMovies();
+  const { nowPlayingQuery, popularQuery } = useMovies();
 
   if (nowPlayingQuery.isLoading) {
     return (
@@ -28,6 +29,9 @@ export default function HomeScreen() {
       </Text>
       {/* Carousel */}
       <MainSalidesShow movies={nowPlayingQuery.data ?? []} />
+      {/* Popular movies horizontal list */}
+      <MovieHorizontalList title="Populares" movies={popularQuery.data ?? []} />
+      {/* Top rated movies horizontal list */}
     </View>
   );
 }
