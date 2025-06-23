@@ -1,3 +1,4 @@
+import { Movie } from "@/infrastructure/models/movie.interface";
 import MainSalidesShow from "@/presentation/componens/movies/MainSalidesShow";
 import MovieHorizontalList from "@/presentation/componens/movies/MovieHorizontalList";
 import { useMovies } from "@/presentation/hooks/useMovies";
@@ -39,7 +40,8 @@ export default function HomeScreen() {
         {/* Top rated movies horizontal list */}
         <MovieHorizontalList
           title="Mejor calificadas"
-          movies={topRatedQuery.data ?? []}
+          movies={(topRatedQuery.data?.pages.flat() as Movie[]) ?? []}
+          loadNextPage={topRatedQuery.fetchNextPage}
         />
         {/* Upcoming movies horizontal list */}
         <MovieHorizontalList
