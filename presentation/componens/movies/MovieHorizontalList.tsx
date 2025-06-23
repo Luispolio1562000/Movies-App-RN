@@ -48,7 +48,7 @@ const MovieHorizontalList = ({ title, movies, loadNextPage }: Props) => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item, index) => ` ${item.id}-${index}`}
         renderItem={({ item }) => (
-          <MoviePoster smallPoster id="item.id" moviePoster={item.poster} />
+          <MoviePoster smallPoster id={item.id} moviePoster={item.poster} />
         )}
         contentContainerStyle={{ paddingHorizontal: 10 }}
         onScroll={onScroll}
