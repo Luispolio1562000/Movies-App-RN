@@ -13,7 +13,12 @@ interface Props {
 const MainSalidesShow = ({ movies }: Props) => {
   const ref = useRef<ICarouselInstance>(null);
 
-  const width = useWindowDimensions().width;
+  const { width } = useWindowDimensions();
+
+  if (movies.length === 0) {
+    return null;
+  }
+
   return (
     <View className="h-[250px] w-full">
       <Carousel

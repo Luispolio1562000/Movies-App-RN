@@ -31,11 +31,14 @@ export default function HomeScreen() {
           Movies App
         </Text>
         {/* Carousel */}
-        <MainSalidesShow movies={nowPlayingQuery.data ?? []} />
+        <MainSalidesShow
+          movies={(nowPlayingQuery.data?.pages.flat() as Movie[]) ?? []}
+        />
         {/* Popular movies horizontal list */}
         <MovieHorizontalList
           title="Populares"
-          movies={popularQuery.data ?? []}
+          movies={(popularQuery.data?.pages.flat() as Movie[]) ?? []}
+          loadNextPage={popularQuery.fetchNextPage}
         />
         {/* Top rated movies horizontal list */}
         <MovieHorizontalList
@@ -46,7 +49,8 @@ export default function HomeScreen() {
         {/* Upcoming movies horizontal list */}
         <MovieHorizontalList
           title="Próximos estrenos"
-          movies={upcomingQuery.data ?? []}
+          movies={(upcomingQuery.data?.pages.flat() as Movie[]) ?? []}
+          loadNextPage={upcomingQuery.fetchNextPage}
         />
       </View>
     </ScrollView>
