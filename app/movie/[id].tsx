@@ -1,17 +1,27 @@
-import { getMovieByIdAction } from "@/core/actions/movie/get-movie-by-id.action";
+import { useMovie } from "@/presentation/hooks/useMovie";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { ActivityIndicator, ScrollView, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
-  console.log("id", id);
-  getMovieByIdAction(+id);
+  const { movieQuery } = useMovie(+id);
+  if (movieQuery.isLoading) {
+    return (
+      <SafeAreaView className="flex flex-1 justify-center items-center">
+        <Text className="text-2xl text-pink-400">Cargando detalles...</Text>
+        <ActivityIndicator color="pink" size={30} />
+      </SafeAreaView>
+    );
+  }
 
   return (
-    <View>
-      <Text>MovieScreen</Text>
-    </View>
+    <SafeAreaView className="flex flex-1 justify-center items-center">
+      <ScrollView>
+        <Text>{movieQuery.data?.title}</Text>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
