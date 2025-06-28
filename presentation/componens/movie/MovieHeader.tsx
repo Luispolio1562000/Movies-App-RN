@@ -1,4 +1,5 @@
 import IonIcon from "@expo/vector-icons/Ionicons";
+import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React from "react";
 import {
@@ -19,6 +20,16 @@ const MovieHeader = ({ poster, originalTitle, title }: Props) => {
   const { height: screngHeight } = useWindowDimensions();
   return (
     <>
+      <LinearGradient
+        start={[0, 0]}
+        style={{
+          height: screngHeight * 0.4,
+          width: "100%",
+          position: "absolute",
+          zIndex: 1,
+        }}
+        colors={["rgba(0,0,0,0.3)", "transparent"]}
+      ></LinearGradient>
       <View
         style={{
           position: "absolute",
