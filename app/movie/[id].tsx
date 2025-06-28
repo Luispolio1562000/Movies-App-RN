@@ -1,3 +1,4 @@
+import MovieHeader from "@/presentation/componens/movie/MovieHeader";
 import { useMovie } from "@/presentation/hooks/useMovie";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
@@ -7,7 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
   const { movieQuery } = useMovie(+id);
-  if (movieQuery.isLoading) {
+  if (movieQuery.isLoading || movieQuery.isFetching || !movieQuery.data) {
     return (
       <SafeAreaView className="flex flex-1 justify-center items-center">
         <Text className="text-2xl text-pink-400">Cargando detalles...</Text>
@@ -18,8 +19,13 @@ const MovieScreen = () => {
 
   return (
     <SafeAreaView className="flex flex-1 justify-center items-center">
-      <ScrollView>
-        <Text>{movieQuery.data?.title}</Text>
+      <ScrollView className="flex-1 w-full">
+        <MovieHeader
+          originalTitle={movieQuery.data.originalTitle}
+          poster={movieQuery.data.poster}
+          title={movieQuery.data.title}
+        />
+        <Text>{movieQuery.data.title}</Text>
       </ScrollView>
     </SafeAreaView>
   );
