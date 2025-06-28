@@ -1,3 +1,4 @@
+import MovieDescription from "@/presentation/componens/movie/MovieDescription";
 import MovieHeader from "@/presentation/componens/movie/MovieHeader";
 import { useMovie } from "@/presentation/hooks/useMovie";
 import { useLocalSearchParams } from "expo-router";
@@ -19,13 +20,13 @@ const MovieScreen = () => {
 
   return (
     <SafeAreaView className="flex flex-1 justify-center items-center">
-      <ScrollView className="flex-1 w-full">
+      <ScrollView className="flex-1 flex-col w-full">
         <MovieHeader
           originalTitle={movieQuery.data.originalTitle}
           poster={movieQuery.data.poster}
           title={movieQuery.data.title}
         />
-        <Text>{movieQuery.data.title}</Text>
+        <MovieDescription movie={movieQuery.data} />
       </ScrollView>
     </SafeAreaView>
   );

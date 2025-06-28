@@ -60,8 +60,8 @@ const MovieHeader = ({ poster, originalTitle, title }: Props) => {
           />
         </View>
       </View>
-      <View className="flex-row justify-between items-center px-5 mt-5">
-        <Text className="text-black text-2xl font-bold">{originalTitle}</Text>
+      <View className="flex flex-col gap-2 justify-between items-center px-5 mt-5">
+        <Text className="text-black font-light">{originalTitle}</Text>
         <Text className="text-black text-2xl font-bold">{title}</Text>
       </View>
     </>
