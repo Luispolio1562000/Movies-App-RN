@@ -11,7 +11,7 @@ const ActorCard = ({ actor }: Props) => {
     <View className="mx-10 w-[60px]">
       <Image
         source={{ uri: actor.avatar }}
-        className="w-[100px] h-[150] rounded-2xl shadow"
+        className="w-[100px] h-[150] rounded-2xl shadow-2xl"
         resizeMode="cover"
       />
 
